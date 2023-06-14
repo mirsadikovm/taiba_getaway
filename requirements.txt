@@ -1,0 +1,14 @@
+asgiref==3.6.0
+distlib==0.3.6
+Django==4.1.7
+django-filter==22.1
+django-phonenumber-field==7.0.2
+filelock==3.10.2
+Markdown==3.4.3
+phonenumbers==8.13.7
+platformdirs==3.1.1
+python-dotenv==1.0.0
+pytz==2022.7.1
+sqlparse==0.4.3
+tzdata==2022.7
+virtualenv==20.21.0

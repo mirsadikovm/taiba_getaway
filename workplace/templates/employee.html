@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block title %} Сотрудники {% endblock %}
+{% load employee_extras %}
+{% load static %}
+{% block content %}
+    <main class="main">
+      <section class="workers">
+        <div class="container">
+          <div class="search">
+            <input class="search_input" type="search" placeholder="Поиск" />
+          </div>
+          <div class="workers_content">
+            <table>
+              <thead>
+                <tr>
+                  <th class="worker__title"></th>
+                  <th class="worker__title">Имя</th>
+                  <th class="worker__title">Фамилия</th>
+                  <th class="worker__title">Номер Телефона</th>
+                  <th class="worker__title">Должность</th>
+                  <th class="worker__title"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for r in result %}
+                <tr>
+                  <td>{{r.uid}}</td>
+                  <td class="worker_info">{{r.frist_name}}</td>
+                  <td class="worker_info">{{r.last_name}}</td>
+                  <td class="worker_info">{{r.phone_number}}</td>
+                  <td class="worker_info">{{r.profession}}</td>
+                  <td class="worker_info"> 
+                    {% if r.uid == emp_data|check_employee %}
+                    <i class="bi-trash">Ваши данные</i>
+                    {%elif r.profession == "Директор" %}
+                      <i class="bi-trash">Директора компании нельзя удалять</i>
+                    {%elif emp_profession == r.profession %}
+                      <i class="bi-trash">Вы не можете удалить данного сотрудника чтобы удалить данного сотрудника отпрабтитесь выше стоящим сотрудникам</i>
+                    {% else %}
+                    <button onclick="submit_delete( '{{r.uid}}' )" type="button" class="btn btn-success">
+                      <i class="bi-trash">Delete</i>
+                      
+                    </button>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+
+             
+            </table>
+
+            <button class="modal_reg">Новый сотрудник</button>
+          
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+
+    
+    <div class="worker__registration">
+      <div class="reg_item">
+        <div type="button" class="modal__back" id="back"></div>
+        <form method = "post" action="{% url 'employee_create' emp_data %}" class="form-container">
+        {% csrf_token %}
+        <h5 class="reg__title">Регистрация рабочего:</h5>
+        <div class="reg_input">
+          <label for="name" class="inputdescr">Логин ID </label>
+          {{form.uid}}
+          <label for="name" class="inputdescr">Имя </label>
+          {{form.frist_name}}
+          <label for="sourname" class="inputdescr">Фамилия </label>
+          {{form.last_name}}
+          <label for="num" class="inputdescr">Номер Телефона </label>
+          {{form.phone_number}}
+          <label for="password" class="inputdescr">Пароль</label>
+          {{form.password}}
+          <label for="work" class="inputdescr">Должность</label>
+          {{form.profession}}
+          <button class="registr_btn" >Подтвердить</button>
+        </div>
+        </form>
+        </div>
+    </div>
+<script>
+
+  function submit_delete(uid) {
+    $.ajax( {
+
+      url : "http://127.0.0.1:8000/employee/delete/" + uid ,
+      type : 'GET',
+
+      success: function(result) {
+        window.location.reload();
+      },
+      error: function(result) {
+        alert('error');
+      }
+      });
+    }
+
+
+
+  let btn = document.querySelector(".modal__back");
+    btn.onclick = function () {
+      document.querySelector(".modal").style.display = "none";
+  };
+
+  let burger = document.querySelector(".burger");
+    burger.onclick = function () {
+      document.querySelector(".nav_content").style.transform = "translateX(0)"
+  };
+
+  let close = document.querySelector(".close_mod");
+    close.onclick = function () {
+      document.querySelector(".nav_content").style.transform = "translateX(-100%)";
+  };
+
+
+
+
+
+
+      
+  let reg = document.querySelector('.modal_reg')
+    reg.onclick = function (e) {
+        document.querySelector('.worker__registration').style.display="flex"
+     }
+      
+
+     let close_reg = document.querySelector('.modal__back')
+     close_reg.onclick = function (e) {
+        document.querySelector('.worker__registration').style.display="none"
+    }
+    
+    </script>
+    <script src="{% static 'workplace/scripts/script.js' %}"></script>
+  </body>
+</html>
+{% endblock %}

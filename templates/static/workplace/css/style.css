@@ -1,0 +1,776 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+.close_mod {
+    display: none;
+}
+
+.nav {
+    background: #14783ca8;
+}
+
+.burger {
+    display: none;
+}
+
+.nav_content {
+    transform: translateX(0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__icon {
+    width: 90px;
+    height: 90px;
+    padding: 10px;
+}
+
+.nav__icon {
+    border-radius: 139px;
+    width: 100px;
+    height: 100px;
+
+}
+
+.nav_list {
+    display: flex;
+
+}
+
+.nav__list-link {
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 22px;
+    color: #FFFFFF;
+    padding: 20px 20px;
+
+}
+
+.nav_reg-item {
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 22px;
+    color: #FFFFFF;
+    padding: 16px 25px;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    border: 3px solid #FFFFFF;
+    border-radius: 19px;
+}
+
+.nav_reg-item:hover {
+    background: #FFFFFF;
+    color: #14783C;
+}
+
+.nav_reg-sign {
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 22px;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    padding: 20px 30px;
+    cursor: pointer;
+    background: none;
+}
+
+.news_section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.news_title {
+    text-align: center;
+    font-family: 'Inter';
+    color: #14783C;
+    font-size: 30px;
+    margin-top: 50px;
+
+}
+
+.news__logistics {
+    width: 100%;
+}
+
+.news__logistic-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-radius: 40px;
+    margin: 60px 0;
+}
+
+
+.logistics__list-info {
+    display: flex;
+    margin-top: 20px;
+    gap: 30px;
+    align-items: center;
+
+}
+
+.logistic__list-img {
+    border-radius: 20px;
+}
+
+.logistic__list-text {
+    font-family: 'Inter';
+    font-size: 20px;
+    font-weight: 600;
+    color: #14783C;
+}
+
+
+.logistic__list-date {
+    font-family: 'Inter';
+    font-weight: 600;
+    width: max-content;
+}
+
+.worker_id {
+    font-weight: 800;
+}
+
+.worker_name {
+    font-weight: 900;
+}
+
+.news__nav {
+    padding: 40px 40px;
+    background: #aca9a990;
+    border-radius: 40px;
+    height: max-content;
+    margin-top: 60px;
+    width: 22%;
+
+}
+
+.news__nav-title {
+    font-family: 'Inter';
+    font-size: 27px;
+    color: #14783C;
+
+
+}
+
+.news__nav-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+    border-left: solid #14783C 4px;
+    padding: 10px;
+}
+
+.news-btns-links {
+    font-family: 'Inter';
+    font-weight: 400;
+    color: #14783C;
+    font-size: 20px;
+    text-decoration: underline;
+
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.496);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.modal_win {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 40px;
+    padding: 50px 30px;
+    width: 400px;
+    height: 400px;
+}
+
+.modal_win-title {
+    font-family: 'Inter';
+    font-size: 34px;
+    color: #14783C;
+    font-weight: 800;
+    text-align: center;
+}
+
+.modal__win-text {
+    font-family: 'Inter';
+    font-size: 26px;
+    color: #14783C;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+.modal__win-input {
+    font-family: 'Inter';
+    width: 100%;
+    outline: none;
+    padding: 8px;
+    border: #14783C solid 2px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #14783C;
+}
+
+.form {
+    width: 100%;
+}
+
+.modal__submit {
+    font-family: 'Inter';
+    font-size: 30px;
+    color: #14783C;
+    font-weight: 400;
+
+    border: #14783C solid 3px;
+    border-radius: 20px;
+    width: 143px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__back {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    display: flex;
+    width: 30px;
+    height: 6px;
+    background-color: grey;
+    transform: rotate(45deg);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal__back::after {
+    content: '';
+    width: 30px;
+    height: 6px;
+    background-color: grey;
+    transform: rotate(90deg);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.modal__submit:hover {
+    color: white;
+    background: #14783C;
+}
+
+.btns {
+    display: flex;
+    margin: 25px auto;
+    justify-content: space-around;
+}
+
+.nav__icon-link-burg {
+    display: none;
+}
+
+
+.search {
+    width: 100%;
+    padding: 40px 0;
+}
+
+.search_input {
+    font-family: 'Inter';
+    font-size: 18px;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 40px;
+    outline: none;
+    border: #14783C solid 3px;
+}
+
+.worker__registration {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    background: rgba(0, 0, 0, 0.548);
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.reg_item {
+    position: relative;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 30px;
+    height: max-content;
+    border-radius: 40px;
+}
+
+.reg_input {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0;
+}
+
+.reg__title {
+    font-family: 'Inter';
+    text-align: center;
+    color: #14783C;
+    font-size: 24px;
+
+}
+
+.inputdescr {
+    font-family: 'Inter';
+    font-size: 14px;
+    color: #14783C;
+    font-weight: 500;
+    margin-left: 0px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+
+
+}
+
+.search__input {
+    font-weight: 500;
+    font-size: 16px;
+    width: 100%;
+    font-family: 'Inter';
+    outline: none;
+    border: #14783C solid 1px;
+    border-radius: 10px;
+    padding: 5px 10px;
+
+
+}
+
+.registr_btn {
+    font-family: 'Inter';
+    font-size: 17px;
+    color: #14783C;
+    border: #14783C solid 2px;
+    margin: 30px auto 0;
+    width: max-content;
+    padding: 10px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.registr_btn:hover {
+    color: white;
+    background: #14783C;
+
+}
+
+.modal_reg {
+    font-family: 'Inter';
+    font-size: 17px;
+    color: #14783C;
+    border: #14783C solid 2px;
+    margin: 30px auto 0;
+    width: max-content;
+    padding: 10px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.modal_reg:hover {
+    color: white;
+    background: #14783C;
+
+}
+
+.new_order {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    transform: translateX(100%);
+    transition: 1.2s;
+    border: #14783C solid 3px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr {
+    border: #14783C solid 2px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+.worker__title {
+    font-family: 'Inter';
+    color: #14783C;
+    font-weight: 800;
+}
+
+.worker_info {
+    font-family: 'Inter';
+    font-weight: 500;
+    color: #14783C;
+}
+
+
+@media (max-width:1280px) {
+    .logistics__list-info {
+        flex-direction: column;
+        height: 500px;
+
+    }
+
+    .ligistic_file-label {
+        top: auto;
+        left: 40px;
+        bottom: 20px;
+        right: auto;
+    }
+
+
+    .news__nav {
+        width: 33%;
+    }
+
+}
+
+@media (max-width:992px) {
+    .nav__list-link {
+        font-size: 17px;
+    }
+
+    .nav_reg-item {
+        font-size: 17px;
+        padding: 12px 15px;
+    }
+
+    .nav_reg-sign {
+        font-size: 17px;
+
+        padding: 12px 15px;
+
+    }
+
+    .log_news {
+        font-size: 20px;
+    }
+
+    .news__nav-title {
+        font-size: 20px;
+    }
+
+    .logistic__list-text {
+        font-size: 18px;
+    }
+
+    .logistic__list-date {
+        font-size: 18px;
+    }
+
+    .news-btns-links {
+        font-size: 16px;
+    }
+
+    .logistic__list-img {
+        width: 100%;
+    }
+
+    .nav__icon {
+        width: 80px;
+        height: 80px;
+    }
+
+}
+
+@media (max-width:893px) {
+    .ligistic_file-label {
+        margin: auto;
+        left: auto;
+        bottom: -45px;
+        font-weight: 600;
+    }
+}
+
+@media (max-width:700px) {
+    .worker__title{
+        font-size: 14px;
+    }
+    .worker_info{
+        font-size: 14px;
+    }
+    .news_section {
+        flex-direction: column;
+    }
+
+    .ligistic_file-label {
+        left: 40px;
+        bottom: 20px;
+    }
+
+    .news__nav {
+        width: 100%;
+    }
+
+    .news__logistics {
+        width: 90%;
+        margin: auto;
+    }
+
+    .nav_content .nav__icon-link .nav__icon {
+        width: 120px;
+        height: 120px;
+    }
+
+    .burger {
+        display: flex;
+        width: 35px;
+        height: 2px;
+        background: #FFFFFF;
+    }
+
+    .burger::after {
+        content: '';
+        width: 35px;
+        height: 2px;
+        background: #FFFFFF;
+        margin-top: 10px;
+    }
+
+    .burger::before {
+        content: '';
+        width: 35px;
+        height: 2px;
+        background: #FFFFFF;
+        margin-top: -10px;
+    }
+
+    .nav_content {
+        transform: translateX(-100%);
+        transition: .8s;
+        position: fixed;
+        flex-direction: column;
+        background: #14783cae;
+        backdrop-filter: blur(5px);
+        top: 0;
+        right: 50%;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        z-index: 999;
+        justify-content: center;
+        overflow: hidden;
+        gap: 30px;
+
+    }
+
+    .nav__icon-link-burg {
+        display: flex;
+        padding: 20px 0;
+    }
+
+    .burg {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    .nav_list {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav__list-link {
+        font-size: 25px;
+    }
+
+    .nav_reg-item {
+        font-size: 20px;
+
+    }
+
+    .nav_reg-sign {
+        font-size: 20px;
+    }
+
+    .close_mod {
+        display: flex;
+        width: 35px;
+        height: 5px;
+        background: rgb(71, 71, 71);
+        transform: rotate(-45deg);
+        position: absolute;
+        top: 40px;
+        right: 30px;
+        border-radius: 5px;
+    }
+
+    .close_mod::after {
+        content: '';
+        display: flex;
+        width: 35px;
+        height: 5px;
+        background: rgb(71, 71, 71);
+        transform: rotate(90deg);
+        border-radius: 5px;
+    }
+
+    .modal_win-title {
+        font-size: 25px;
+    }
+
+    .modal__win-text {
+        font-size: 19px;
+    }
+
+    .modal__win-input {
+        font-size: 16px;
+    }
+
+    .modal__back {
+        height: 6px;
+        background-color: grey;
+    }
+
+    .modal__submit {
+        font-size: 20px;
+        width: 109px;
+        height: 50px;
+    }
+
+    .modal_win {
+        height: 370px;
+        width: 90%;
+    }
+
+    .logistic__list-date {
+        font-size: 14px;
+        max-width: 100%;
+    }
+}
+
+
+@media (max-width:523px) {
+    .ligistic_file-label {
+        margin: auto;
+        left: auto;
+        bottom: -45px;
+        font-weight: 600;
+    }
+    .reg__title{
+        font-size: 14px;
+    }
+    .search__input {
+        font-weight: 500;
+        font-size: 12px;
+    }
+    .registr_btn {
+        font-family: 'Inter';
+        font-size: 14px;
+    }
+    .worker__title {
+        font-size: 12px;
+    }
+
+    .worker_info {
+        font-size: 12px;
+    }
+
+    .modal_reg {
+        font-size: 12px;
+    }
+    th,
+    td,
+    tr {
+      display: block;
+      border: none;
+    }
+    table{
+        display: flex;
+        overflow: scroll;
+    }
+    tbody{
+        display: flex;
+    }
+}
+
+@media (max-width:400px) {
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+
+}
+
+@media (max-width:375px) {
+    .log_news {
+        font-size: 16px;
+    }
+
+    .logistic__list-text {
+        font-size: 16px;
+    }
+
+    .logistic__list-date {
+        font-size: 12px;
+    }
+}

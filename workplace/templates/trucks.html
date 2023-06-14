@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block title %} Грузовики {% endblock %}
+{% load static%}
+{% block content %}
+
+<main class="main">
+    <section class="workers">
+      <div class="container">
+        <div class="search">
+          <input class="search_input" type="search" placeholder="Поиск" />
+        </div>
+        <div class="workers_content">
+          <table>
+            <thead>
+              <tr>
+                <th class="worker__title">Водитель</th>
+                <th class="worker__title">Номер водителя</th>
+                <th class="worker__title">Номер Машины</th>
+                <th class="worker__title">Вес</th>
+                <th class="worker__title">Дата отправки</th>
+                <th class="worker__title">Дата прибытия</th>
+                <th class="worker__title"></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for r in result %}
+                <tr>
+                <td class="worker_info">
+                  <p>{{r.driver.frist_name}} {{r.driver.last_name}}</p>
+                </td>
+                <td class="worker_info">{{r.driver.phone_number}}</td>
+                <td class="worker_info">{{r.car_number}}</td>
+                <td class="worker_info">{{r.weight_in_kg}} кг</td>
+                <td class="worker_info">{{r.arrival_timedate}}</td>
+                <td class="worker_info">{{r.date}}</td>
+                <td class="worker_info">
+                  <button onclick="confirm( '{{r.uid}}', {'emp_data'} )" type="button" class="btn btn-success">
+                    <i class="bi-trash">Подтвердить Приезд</i>
+                    
+                  </button>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+
+          
+          <button class="modal_reg">Новая доставка</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <form method = "post" action="{% url 'truck_create' emp_data %}" class="form-container">
+    {% csrf_token %}
+          <div class="worker__registration">
+            <div class="reg_item">
+              <div type="button" class="modal__back" id="back"></div>
+              <h5 class="reg__title">Регистрация рабочего:</h5>
+              <div class="reg_input">
+                <label for="name" class="inputdescr">Имя </label>
+                {{form.driver.frist_name}}
+                <label for="sourname" class="inputdescr">Фамилия </label>
+                {{form.driver.last_name}}
+                <label for="num_driver" class="inputdescr">Номер водителя </label>
+                {{form.driver.phone_number}}
+                <label for="num_truck" class="inputdescr">Номер Машины </label>
+                {{form.car_number}}
+                <label for="num_truck" class="inputdescr">Страна Отправителья</label>
+                {{form.city_from}}
+                <label for="weight" class="inputdescr">Вес</label>
+                {{form.weight_in_kg}}
+                <label for="arrive_date" class="inputdescr">Дата прибытия </label>
+                {{form.arrival_timedate}}
+                <button class="registr_btn">Подтвердить</button>
+              </div>
+            </div>
+          </div>
+  </form>
+      
+          <script>
+      
+      
+      
+      
+      
+      
+      
+      let btn = document.querySelector(".modal__back");
+      btn.onclick = function () {
+        document.querySelector(".modal").style.display = "none";
+      };
+      
+      let burger = document.querySelector(".burger");
+      burger.onclick = function () {
+        document.querySelector(".nav_content").style.transform = "translateX(0)"
+      };
+      
+      let close = document.querySelector(".close_mod");
+      close.onclick = function () {
+        document.querySelector(".nav_content").style.transform = "translateX(-100%)";
+      };
+            let reg = document.querySelector(".modal_reg");
+            reg.onclick = function (e) {
+              document.querySelector(".worker__registration").style.display = "flex";
+            };
+      
+            let close_reg = document.querySelector(".modal__back");
+            close_reg.onclick = function (e) {
+              document.querySelector(".worker__registration").style.display = "none";
+            };
+
+            function confirm(uid, emp) {
+          $.ajax( {
+
+            url : "http://127.0.0.1:8000/truck/confirm/" + emp + "/"+ uid ,
+            type : 'GET',
+
+            success: function(result) {
+              window.location.reload();
+            },
+            error: function(result) {
+              alert('error');
+            }
+            });
+          }
+          </script>
+      
+          <script src="{% static 'workplace/scripts/script.js' %}"></script>
+        </body>
+      </html>
+            
+
+{% endblock %}

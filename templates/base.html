@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Praise&display=swap" rel="stylesheet">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="icon" href="{% static 'workplace/images/photo_2021-08-23_13-30-02.jpg' %}" />
+  <link rel="stylesheet" href="{% static 'workplace/css/style.css' %}" />
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <div class="container">
+        <div class="burg">
+          
+          <div class="burger"></div>
+          <a href="{% url 'main_1' emp_data %}" class="nav__icon-link-burg">
+            <img src="{% static 'workplace/images/photo_2021-08-23_13-30-02.jpg' %}" class="nav__icon" alt="" />
+          </a>
+
+        </div>
+        
+        <div class="nav_content">
+          <div class="close_mod"></div>
+          <a href="{% url 'main_1' emp_data %}" class="nav__icon-link">
+            <img src="{% static 'workplace/images/photo_2021-08-23_13-30-02.jpg' %}" class="nav__icon" alt="" />
+          </a>
+        
+          <ul class="nav_list">
+            <li><a href="{% url 'employee' emp_data %}" class="nav__list-link">Сотрудники </a></li>
+            <li><a href="{% url 'trucks' emp_data %}" class="nav__list-link">Грузовики</a></li>
+            <li><a href="{% url 'reports' emp_data %}" class="nav__list-link">Отчеты </a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+            {% block content %}
+            {% endblock %}
+    </body>
+</html>

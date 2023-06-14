@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %} Employee {% endblock %}
+
+{% block content %}
+
+<table class="table">
+    <tr>
+      <th>Номер Машины</th>
+      <th>Имя Водителя</th>
+      <th>Фамилия Водителя</th>
+      <th>Номер Телефона</th>
+      <th>Город</th>
+      <th>Вес Продукта</th>
+      <th>Время прихода</th>
+      <th>Статус</th>
+    </tr>
+        {% for r in result %}
+            <tr style="font-family: times new roman">
+            <th> {{ r.car_number }}</th>
+            <th> {{ r.driver.frist_name }}</th>
+            <th> {{ r.driver.last_name }}</th>
+            <th> {{ r.driver.phone_number }}</th>
+            <th> {{ r.city_from }}</th>
+            <th> {{ r.weight_in_kg }}</th>
+            <th> {{ r.arrival_timedate }}</th>
+            <th> {{ r.status }}</th>
+            </tr> 
+        {% endfor %}
+</table>
+  <button class="open-button" onclick="openForm()">Отправить новую машину</button>
+  <div class="form-popup" id="myForm">
+      <form method = "post" action="{% url 'truck_create' emp_data %}" class="form-container">
+            {% csrf_token %}
+            <h3>Отправка нового грузовика</h3>
+          
+          <label for="name"><b>Имя Водителя</b></label>
+            {{form.driver.frist_name}}
+          
+          <label for="surename"><b>Фамилия Водителя</b></label>
+            {{form.driver.last_name}}
+        
+          <label for="phone"><b>Номер Телефона Водителя</b></label>
+            {{form.driver.phone_number}}
+          
+          <label for="number"><b>Номер автомобила</b></label>
+            {{form.car_number}}
+          
+          <label for="name"><b>Пункт Отправки</b></label>
+            {{form.city_from}} 
+          
+          <label for="name"><b>Вес</b></label>
+            {{form.weight_in_kg}} 
+            <label for="name"><b>Примерное время прибытые</b></label>
+            {{form.arrival_timedate}} 
+        
+            <button type="submit" class="btn">Отправить</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Закрыть</button>
+          </form>
+        </div>
+        <script type = "text/javascript">
+          function openForm() {
+              document.getElementById("myForm").style.display = "block";
+          }
+          
+          function closeForm() {
+              document.getElementById("myForm").style.display = "none";
+          } 
+        </script>
+
+{%endblock%}

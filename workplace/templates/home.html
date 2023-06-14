@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} Новсоти {% endblock %}
+{% load event_extras %}
+{% load static %}
+
+{% block content %}
+
+    <main class="main">
+        <section class="news">
+        <div class="container">
+            <h2 class="news_title">Новости:</h2>
+            {% for r in event_lst  %}
+            <div class="news__logistics">
+              <div class="news__logistic-list">
+               
+                <p class="logistic__list-text">
+                    {{ r.text | linebreaks }}
+                </p>
+                <p class="logistic__list-date">{{r.datetime|parse_iso|date:'d/m/Y H:i'}}</p>
+              </div>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
+<script>
+      let burger = document.querySelector(".burger");
+      burger.onclick = function () {
+        document.querySelector(".nav_content").style.transform = "translateX(0)"
+      };
+      
+      let close = document.querySelector(".close_mod");
+      close.onclick = function () {
+        document.querySelector(".nav_content").style.transform = "translateX(-100%)";
+      };
+</script>
+<script src="{% static 'workplace/scripts/script.js' %}"></script>
+{% endblock %}

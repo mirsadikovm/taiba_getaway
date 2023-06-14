@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block title %} Грузовики {% endblock %}
+{% load static%}
+{% block content %}
+
+<main class="main">
+    <section class="workers">
+      <div class="container">
+        <div class="search">
+          <input class="search_input" type="search" placeholder="Поиск" />
+        </div>
+        <div class="workers_content">
+          <table>
+            <thead>
+              <tr>
+                <th class="worker__title">Водитель</th>
+                <th class="worker__title">Номер водителя</th>
+                <th class="worker__title">Номер Машины</th>
+                <th class="worker__title">Вес</th>
+                <th class="worker__title">Дата отправки</th>
+                <th class="worker__title">Дата прибытия</th>
+                <th class="worker__title"></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for r in result %}
+                <tr>
+                    {{r}}
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+
+          
+        </div>
+      </div>
+    </section>
+  </main>
+
+      
+          <script>
+      
+      
+      
+      
+      
+      
+      
+      let btn = document.querySelector(".modal__back");
+      btn.onclick = function () {
+        document.querySelector(".modal").style.display = "none";
+      };
+      
+      let burger = document.querySelector(".burger");
+      burger.onclick = function () {
+        document.querySelector(".nav_content").style.transform = "translateX(0)"
+      };
+      
+      let close = document.querySelector(".close_mod");
+      close.onclick = function () {
+        document.querySelector(".nav_content").style.transform = "translateX(-100%)";
+      };
+            let reg = document.querySelector(".modal_reg");
+            reg.onclick = function (e) {
+              document.querySelector(".worker__registration").style.display = "flex";
+            };
+      
+            let close_reg = document.querySelector(".modal__back");
+            close_reg.onclick = function (e) {
+              document.querySelector(".worker__registration").style.display = "none";
+            };
+
+          </script>
+      
+          <script src="{% static 'workplace/scripts/script.js' %}"></script>
+        </body>
+      </html>
+            
+
+{% endblock %}
