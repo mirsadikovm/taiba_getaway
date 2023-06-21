@@ -15,7 +15,7 @@ urlpatterns = [
 
     path('trucks/<str:hash_data>', get_trucks_list , name='trucks'),
     path('truck/create/<str:hash_data>',create_truck , name='truck_create'),
-    path('truck/confirm/<uuid:pk>',confirm_truck , name='confirm_truck'),
+    path('truck/confirm/<str:hashed_data>/<uuid:pk>',confirm_truck , name='confirm_truck'),
 
     path('reports/<str:hash_data>', get_report_list, name="reports")
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

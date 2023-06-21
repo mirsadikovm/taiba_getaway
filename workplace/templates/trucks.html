@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %} Грузовики {% endblock %}
-{% load static%}
+{% load static %}
 {% block content %}
 
 <main class="main">
@@ -19,12 +19,25 @@
                 <th class="worker__title">Вес</th>
                 <th class="worker__title">Дата отправки</th>
                 <th class="worker__title">Дата прибытия</th>
-                <th class="worker__title"></th>
+                <th class="worker__title">
+                  <span class="oragne_dot"></span>В Пути
+                  <br>
+                  <span class="red_dot"></span>Задерживается
+                  <br>
+                  <span class="green_dot"></span>Доставлено
+
+                </th>
               </tr>
             </thead>
             <tbody>
             {% for r in result %}
-                <tr>
+            {% if r.status == "Отправлено"%}
+                <tr bgcolor = "#d1a562">
+            {% elif r.status == "Задержено"%}
+                <tr bgcolor = "#FF0000">
+            {% else %}
+                <tr bgcolor = "#0FFF50">
+            {%endif%}
                 <td class="worker_info">
                   <p>{{r.driver.frist_name}} {{r.driver.last_name}}</p>
                 </td>
@@ -34,10 +47,11 @@
                 <td class="worker_info">{{r.arrival_timedate}}</td>
                 <td class="worker_info">{{r.date}}</td>
                 <td class="worker_info">
-                  <button onclick="confirm( '{{r.uid}}', {'emp_data'} )" type="button" class="btn btn-success">
+                {%if r.status != "Доставлено"%}
+                <button onclick="confirm('{{r.uid}}', '{{emp_data}}')" type="button" class="btn btn-success">   
                     <i class="bi-trash">Подтвердить Приезд</i>
-                    
-                  </button>
+                {% endif %}
+                </button>
                 </td>
               </tr>
             {% endfor %}
@@ -77,14 +91,7 @@
           </div>
   </form>
       
-          <script>
-      
-      
-      
-      
-      
-      
-      
+    <script>
       let btn = document.querySelector(".modal__back");
       btn.onclick = function () {
         document.querySelector(".modal").style.display = "none";
@@ -99,35 +106,32 @@
       close.onclick = function () {
         document.querySelector(".nav_content").style.transform = "translateX(-100%)";
       };
-            let reg = document.querySelector(".modal_reg");
-            reg.onclick = function (e) {
-              document.querySelector(".worker__registration").style.display = "flex";
-            };
-      
-            let close_reg = document.querySelector(".modal__back");
-            close_reg.onclick = function (e) {
-              document.querySelector(".worker__registration").style.display = "none";
-            };
+      let reg = document.querySelector(".modal_reg");
+      reg.onclick = function (e) {
+        document.querySelector(".worker__registration").style.display = "flex";
+      };
 
-            function confirm(uid, emp) {
+      let close_reg = document.querySelector(".modal__back");
+      close_reg.onclick = function (e) {
+        document.querySelector(".worker__registration").style.display = "none";
+      };
+
+      function confirm(uid, emp) {
           $.ajax( {
 
-            url : "http://127.0.0.1:8000/truck/confirm/" + emp + "/"+ uid ,
-            type : 'GET',
+              url : "http://127.0.0.1:8000/truck/confirm/" + emp + "/"+ uid ,
+              type : 'GET',
 
             success: function(result) {
               window.location.reload();
             },
             error: function(result) {
-              alert('error');
+                alert('Error: ' + error.statusText);
             }
             });
-          }
-          </script>
+        }
+      </script>
       
-          <script src="{% static 'workplace/scripts/script.js' %}"></script>
-        </body>
-      </html>
-            
+          <script src="{% static 'workplace/scripts/script.js' %}"></script>            
 
 {% endblock %}

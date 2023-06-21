@@ -14,7 +14,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import json
 import os
-
+from celery.schedules import crontab
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(BASE_DIR / '.env')
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_celery_beat',
     'worker',
     'workplace',
 ]
@@ -148,5 +149,19 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
+# CELERY
+BROKER_URL = os.environ['BROKER_URL']
+CELERY_RESULT_BACKEND = os.environ['CELERY_RESULT_BACKEND']
+CELERY_ACCEPT_CONTENT = ['application/json']
+REDIS_DB = os.environ['REDIS_DB']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Tashkent'
 
+CELERYBEAT_SCHEDULE = {
+    "timeout_checker": {
+        "task": "worker.tasks.emp_timeout",
+        "schedule": crontab(),
+    }
+}
 
