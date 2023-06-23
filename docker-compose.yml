@@ -1,0 +1,66 @@
+version: '3.7'
+
+services:
+
+  static_collector:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - app-volumes:/app
+    entrypoint: python
+    command: ["manage.py","collectstatic","--noinput"]
+  
+  redis:
+    env_file:
+      - .env
+    image: bitnami/redis
+
+
+  celery:
+    build: .
+    volumes:
+      - app-volumes:/app
+    env_file:
+      - .env
+    command: celery -A gateawey worker --beat -l info
+    depends_on:
+        - redis
+
+  migrator:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - app-volumes:/app
+    entrypoint: python
+    command: ["manage.py", "migrate"]
+
+  createsuperuser:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - app-volumes:/app
+    entrypoint: python
+    command: ["manage.py", "createsuperuser", "--username", $DJANGO_SUPERUSER_USERNAME  ,"--password",  $DJANGO_SUPERUSER_PASSWORD , "--email", "$DJANGO_SUPERUSER_EMAIL" , "--preserve"]
+    depends_on:
+      - migrator
+
+  web:
+    build: .
+    ports:
+    - 8008:8008
+    - 8000:8000
+    volumes:
+      - app-volumes:/app
+    env_file:
+      - .env
+    command: ["python","manage.py", "runserver"]
+    depends_on:
+      - static_collector
+      - migrator
+      - redis
+
+volumes:
+  app-volumes:

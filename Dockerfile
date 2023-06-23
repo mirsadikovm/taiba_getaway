@@ -1,14 +1,13 @@
-FROM python:3.8 as base
+FROM python:3.10.6
 
 COPY . /app
 
 WORKDIR /app
 
+RUN pip install --upgrade pip
+
 RUN pip install -r requirements.txt
 
+ENV DJANGO_ALLOWED_HOSTS=*
 
-FROM base as web
-CMD ["uvicorn", "main:app", "--env-file", ".env", "--host", "0.0.0.0"]
-
-FROM base as calculator
-CMD ["python", "calculator.py"]
+ENV DEVELOPMENT_MODE=True
