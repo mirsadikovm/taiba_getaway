@@ -43,20 +43,19 @@ services:
     volumes:
       - app-volumes:/app
     entrypoint: python
-    command: ["manage.py", "createsuperuser", "--username", $DJANGO_SUPERUSER_USERNAME  ,"--password",  $DJANGO_SUPERUSER_PASSWORD , "--email", "$DJANGO_SUPERUSER_EMAIL" , "--preserve"]
+    command: ["gateawey/manage.py", "createsuperuser", "--username", $DJANGO_SUPERUSER_USERNAME  ,"--password",  $DJANGO_SUPERUSER_PASSWORD , "--email", "$DJANGO_SUPERUSER_EMAIL" , "--preserve"]
     depends_on:
-      - migrator
+      - migrator_1
 
   web:
     build: .
     ports:
-    - 8008:8008
     - 8000:8000
     volumes:
       - app-volumes:/app
     env_file:
       - .env
-    command: ["python","manage.py", "runserver"]
+    command: ["python","manage.py", "runserver", "0.0.0.0:8000"]
     depends_on:
       - static_collector
       - migrator

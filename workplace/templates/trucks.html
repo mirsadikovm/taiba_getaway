@@ -20,11 +20,11 @@
                 <th class="worker__title">Дата отправки</th>
                 <th class="worker__title">Дата прибытия</th>
                 <th class="worker__title">
-                  <span class="oragne_dot"></span>В Пути
+                  <span class="oragne_dot"></span><span>В Пути</span>
                   <br>
-                  <span class="red_dot"></span>Задерживается
+                  <span class="red_dot"></span><span>Опаздывает</span>
                   <br>
-                  <span class="green_dot"></span>Доставлено
+                  <span class="green_dot"></span><span>Доставлено</span>
 
                 </th>
               </tr>
@@ -47,7 +47,7 @@
                 <td class="worker_info">{{r.arrival_timedate}}</td>
                 <td class="worker_info">{{r.date}}</td>
                 <td class="worker_info">
-                {%if r.status != "Доставлено"%}
+                {% if r.status != "Доставлено" and emp.profession == 'Получатель' %}
                 <button onclick="confirm('{{r.uid}}', '{{emp_data}}')" type="button" class="btn btn-success">   
                     <i class="bi-trash">Подтвердить Приезд</i>
                 {% endif %}
@@ -58,8 +58,9 @@
             </tbody>
           </table>
 
-          
+          {% if emp.profession == "Отправитель" %}
           <button class="modal_reg">Новая доставка</button>
+          {% endif %}
         </div>
       </div>
     </section>

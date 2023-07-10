@@ -14,7 +14,7 @@ class EmployeeRegisterForm(forms.Form):
     uid = forms.CharField(max_length=50,widget=forms.Textarea(attrs={
                                                                     'type':'text',
                                                                     'placeholder':"Логин ID для сотрудника",
-                                                                     'name':"uid",
+                                                                     'name':"id",
                                                                     "padding-right": "15px",
                                                                     "padding-left": "15px",
                                                                      'rows': 1, 

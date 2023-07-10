@@ -9,6 +9,9 @@ a {
     text-decoration: none;
 }
 
+p {
+ font-size: small;
+}
  .oragne_dot {
     height: 10px;
     width: 10px;

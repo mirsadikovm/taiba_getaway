@@ -14,7 +14,7 @@ def get_trucks_list(request, hash_data = 0):
     if emp:
             form = TruckForm()
             truck_lst= json.loads(requests.get(f"{settings.REST_FRAMEWORK_URL}/trucks/all/").text)
-            return render(request ,'trucks.html', context={'result': truck_lst , 'emp_data': hash_data, 'form': form})
+            return render(request ,'trucks.html', context={'result': truck_lst ,'emp': emp, 'emp_data': hash_data, 'form': form})
     return redirect('login')
 
 
