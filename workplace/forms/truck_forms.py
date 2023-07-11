@@ -53,6 +53,15 @@ class TruckForm(forms.Form):
                                                                      'rows': 1, 
                                                                      'cols': 36.5,
                                                                      'style':'resize:none;'}))
+    city_to = forms.CharField(max_length=50,widget=forms.Textarea(attrs={
+                                                                    'type':'text',
+                                                                    'placeholder':" Место Приезда",
+                                                                     'name':"uid",
+                                                                    "padding-right": "15px",
+                                                                    "padding-left": "15px",
+                                                                     'rows': 1, 
+                                                                     'cols': 36.5,
+                                                                     'style':'resize:none;'}))
     weight_in_kg = forms.IntegerField(widget=forms.Textarea(attrs={
                                                                     'type':'text',
                                                                     'placeholder':" Вес",
