@@ -41,8 +41,8 @@ def create_truck(request, hash_data = None):
 def confirm_truck(request,hashed_data,pk):
     
     emp = check_employee_exists_by_hash(hashed_data)
-    data = {"accept_by": emp.uid, "Status": "Доставлено"} # type: ignore
-    requests.patch(f'{settings.REST_FRAMEWORK_URL}/trucks/all/{pk}', data = data)
+    data = {"accept_by": emp.get('uid'), "status": "Доставлено"} # type: ignore
+    requests.patch(f'{settings.REST_FRAMEWORK_URL}/trucks/all/{pk}/', data = data)
     response = {
         'data' : 'User deleted',
     }

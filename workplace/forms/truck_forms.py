@@ -5,7 +5,7 @@ class DriverForm(forms.Form):
 
     frist_name = forms.CharField(max_length=50,widget=forms.Textarea(attrs={
                                                                     'type':'text',
-                                                                    'placeholder':"Имя Водителя",
+                                                                    'placeholder':" Имя Водителя",
                                                                      'name':"uid",
                                                                     "padding-right": "15px",
                                                                     "padding-left": "15px",
@@ -14,7 +14,7 @@ class DriverForm(forms.Form):
                                                                      'style':'resize:none;'}))
     last_name = forms.CharField(max_length=50,widget=forms.Textarea(attrs={
                                                                     'type':'text',
-                                                                    'placeholder':"Фамилия Водителя",
+                                                                    'placeholder':" Фамилия Водителя",
                                                                      'name':"uid",
                                                                     "padding-right": "15px",
                                                                     "padding-left": "15px",
@@ -23,7 +23,7 @@ class DriverForm(forms.Form):
                                                                      'style':'resize:none;'}))
     phone_number = PhoneNumberField(max_length=50,widget=forms.Textarea(attrs={
                                                                     'type':'text',
-                                                                    'placeholder':"Номер Телефона Водителя",
+                                                                    'placeholder':" Номер Телефона Водителя",
                                                                      'name':"uid",
                                                                     "padding-right": "15px",
                                                                     "padding-left": "15px",
@@ -37,7 +37,7 @@ class TruckForm(forms.Form):
     driver = DriverForm()
     car_number = forms.CharField(max_length=50,widget=forms.Textarea(attrs={
                                                                     'type':'text',
-                                                                    'placeholder':"Номер Машины",
+                                                                    'placeholder':" Номер Машины",
                                                                      'name':"uid",
                                                                     "padding-right": "15px",
                                                                     "padding-left": "15px",
@@ -46,7 +46,7 @@ class TruckForm(forms.Form):
                                                                      'style':'resize:none;'}))
     city_from = forms.CharField(max_length=50,widget=forms.Textarea(attrs={
                                                                     'type':'text',
-                                                                    'placeholder':"Место Отправки",
+                                                                    'placeholder':" Место Отправки",
                                                                      'name':"uid",
                                                                     "padding-right": "15px",
                                                                     "padding-left": "15px",
@@ -55,7 +55,7 @@ class TruckForm(forms.Form):
                                                                      'style':'resize:none;'}))
     weight_in_kg = forms.IntegerField(widget=forms.Textarea(attrs={
                                                                     'type':'text',
-                                                                    'placeholder':"Вес",
+                                                                    'placeholder':" Вес",
                                                                      'name':"uid",
                                                                     "padding-right": "15px",
                                                                     "padding-left": "15px",

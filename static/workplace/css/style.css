@@ -2,11 +2,37 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter';
 }
 
 a {
     text-decoration: none;
 }
+
+ .oragne_dot {
+    height: 10px;
+    width: 10px;
+    background-color: #d1a562;
+    border-radius:50%;
+    border:1px solid rgb(0, 0, 0);    
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    display: inline-block;
+ }
+ .red_dot {
+    height: 10px;
+    width: 10px;    
+    background-color: #FF0000;
+    border-radius: 50%;
+    display: inline-block;
+ }
+ .green_dot {
+    height: 10px;
+    width: 10px;
+    background-color: #0FFF50;
+    border-radius: 50%;
+    display: inline-block;
+ }
 
 li {
     list-style: none;
@@ -21,6 +47,7 @@ li {
 .container {
     width: 90%;
     margin: auto;
+    position: relative;
 }
 
 .close_mod {
@@ -28,7 +55,7 @@ li {
 }
 
 .nav {
-    background: #14783ca8;
+    background: #14783c;
 }
 
 .burger {
@@ -40,6 +67,8 @@ li {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 99999999 !important;
 }
 
 .nav__icon {
@@ -431,6 +460,85 @@ li {
     border: #14783C solid 3px;
 }
 
+.nf_title{
+    font-family: 'Inter';
+    font-size: 24px;
+    text-align: center;
+    margin: 30px 0 ;
+    color: #14783C;
+
+}
+.login_section{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #14783C;
+}
+.nf_link{
+    color: #14783C;
+    font-family: 'Inter';
+    font-size: 17px; 
+    font-weight: 600;
+    border: solid #14783C 2px; 
+    padding: 10px 24px;
+    border-radius: 10px;
+    display: flex;
+    width: max-content;
+}
+.nf_link:hover{
+    color: white;
+    background: #14783C;
+}
+.login{
+    width: 30%;
+    background: #fff;
+    padding: 30px 40px;
+    height: max-content;
+    border-radius: 20px;
+    margin: auto;
+}
+.login_title{
+    font-weight: 800;
+    color: #14783C;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+.login_inputs{
+    display: flex;
+    flex-direction: column;
+}
+.login_label{
+    color: #14783C;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.login_input{
+    width: 100%;
+    outline: none;
+    border: solid #14783C 2px;
+    padding: 5px 7px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: #14783C;
+}
+.login_btn{
+    color: #14783C;
+    border: #14783C solid 3px;
+    font-weight: 600;
+    padding: 8px 27px;
+    width: max-content;
+    border-radius:10px ;
+    margin: auto;
+    cursor: pointer;
+    font-size: 16px;
+
+}
+.login_btn:hover{
+    color: white;
+    background-color: #14783C;
+}
 table {
     border-collapse: collapse;
     width: 100%;
@@ -443,6 +551,7 @@ td {
 }
 
 th {
+
     background-color: #f2f2f2;
 }
 
@@ -450,9 +559,9 @@ tr {
     border: #14783C solid 2px;
 }
 
-tr:nth-child(even) {
+/* tr:nth-child(even) {
     background-color: #f2f2f2;
-}
+} */
 
 tr:hover {
     background-color: #ddd;
@@ -469,8 +578,24 @@ tr:hover {
     font-weight: 500;
     color: #14783C;
 }
+.tableFixHead          { overflow: auto; height: 400px; }
+.tableFixHead thead th { position: sticky; top: 0; z-index: 1; }
 
-
+/* Just common table stuff. Really. */
+table  { border-collapse: collapse; width: 100%; }
+th, td { padding: 8px 16px; }
+th     { background:#eee; }
+thead{
+    background: rgb(176, 175, 175);
+}
+.delete{
+    border: none;
+    background : none;
+    color: #14783C;
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+}
 @media (max-width:1280px) {
     .logistics__list-info {
         flex-direction: column;
@@ -489,6 +614,9 @@ tr:hover {
     .news__nav {
         width: 33%;
     }
+    .login{
+        width: 60%;
+    }
 
 }
 
@@ -496,7 +624,6 @@ tr:hover {
     .nav__list-link {
         font-size: 17px;
     }
-
     .nav_reg-item {
         font-size: 17px;
         padding: 12px 15px;
@@ -709,6 +836,9 @@ tr:hover {
 
 
 @media (max-width:523px) {
+    thead {
+        background: #FFFFFF;
+    }
     .ligistic_file-label {
         margin: auto;
         left: auto;
@@ -741,15 +871,33 @@ tr:hover {
     td,
     tr {
       display: block;
-      border: none;
     }
     table{
         display: flex;
-        overflow: scroll;
     }
     tbody{
         display: flex;
+        overflow: scroll;
+        width: 100%;
     }
+    .nf_title{
+        font-size: 17px;
+    }
+
+    .nf_link{
+        font-size: 14px; 
+        padding: 8px 18px;
+    }
+    .login{
+        width: 80%;
+    }
+    .tableFixHead{
+        height: max-content;
+    }
+   table{
+        display: flex;
+    }
+    
 }
 
 @media (max-width:400px) {
@@ -757,7 +905,7 @@ tr:hover {
         width: 100%;
         padding: 0 10px;
     }
-
+   
 
 }
 

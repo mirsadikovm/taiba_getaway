@@ -1,25 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Praise&display=swap" rel="stylesheet">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
 
-{% block content %}
-
-<div class="container">
-    <h1 class="text-center">Log In</h1>
-    <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6 center-block">
-            <form method="post" style="padding-top: 5%;" action="{% url 'login' %}">
+  <link rel="icon" href="{% static 'workplace/images/photo_2021-08-23_13-30-02.jpg' %}" />
+  <link rel="stylesheet" href="{% static 'workplace/css/style.css' %}" />
+</head>
+<body>
+    <form method="post" action="{% url 'login' %}">
+    <div class="login_section"> 
+        <div class="login">
+            <h3 class="login_title">Вход в рабочее пространство</h3>
+            <div class="login_inputs">
+                
                 {% csrf_token %}
-                <div class="col text-center">
-                    {{form.uid}}
-                    {{form.password}}
-                </div>
-                <input name="next" type="hidden" value="{{next}}" />
-                <div class="col text-center" style="padding-top: 2%;">
-                    <input class="text-center" type="submit" value="LogIn">
-                </div>
-            </form>
-        </div>
-        <div class="col-sm-3"></div>
-    </div>
+                <label for="login" class="login_label">Введите логин:</label>
+                {{form.uid}}
     
-</div>
-{% endblock %}
+    
+                <label for="password" class="login_label">Введите пароль:</label>
+                {{form.password}}
+                <input style="margin-top: 1% ;" type="submit" class="login_btn" value="Войти">
+            </div>  
+        </div>
+    </div>
+    </form>
+</body>
+</html>
