@@ -14,3 +14,14 @@ let close = document.querySelector(".close_mod");
 close.onclick = function () {
   document.querySelector(".nav_content").style.transform = "translateX(-100%)";
 };
+
+function updateServerTime() {
+  $.getJSON('/server-time/', function(data) {
+    $('#server-time').text(data.server_time);
+  });
+}
+
+$(document).ready(function() {
+  updateServerTime();
+  setInterval(updateServerTime, 1000);
+});

@@ -22,6 +22,8 @@
 
   <link rel="icon" href="{% static 'workplace/images/photo_2021-08-23_13-30-02.jpg' %}" />
   <link rel="stylesheet" href="{% static 'workplace/css/style.css' %}" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="{% static 'workplace/scripts/script.js' %}"></script>
 </head>
 
 <body>
@@ -44,9 +46,17 @@
           </a>
         
           <ul class="nav_list">
+            {% if emp.profession == 'Управляющий' %}
             <li><a href="{% url 'employee' emp_data %}" class="nav__list-link">Сотрудники </a></li>
+            {% endif %}
             <li><a href="{% url 'trucks' emp_data %}" class="nav__list-link">Грузовики</a></li>
-            <li><a href="{% url 'reports' emp_data %}" class="nav__list-link">Отчеты </a></li>
+            <li><a href="{% url 'login' %}" class="nav__list-link">Выйти</a></li>
+            <li>
+              <div class="time">
+                <span id="server-time"></span>
+            </div>
+            </li>
+            <!-- <li><a href="{% url 'reports' emp_data %}" class="nav__list-link">Отчеты </a></li> -->
           </ul>
         </div>
       </div>
